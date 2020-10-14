@@ -1,0 +1,26 @@
+use `mongod` in terminal to start mongodb server
+
+----
+https://stackoverflow.com/questions/58034955/read-only-file-system-when-attempting-mkdir-data-db-on-mac
+
+NOTE: I replaced "/System/Volumes/Data/data/db" with "~/Desktop/dev/mongoData"
+
+With the new macOS Catalina update, the folder /data/db becomes read-only, you cannot modify it. Follow this procedure to create a DB in another folder:
+
+Change mongod directory :
+
+sudo mongod --dbpath /System/Volumes/Data/data/db
+
+Give it an alias to use it as mongod:
+
+alias mongod="sudo mongod --dbpath /System/Volumes/Data/data/db"
+
+Just type mongod in your terminal, it should work.
+
+Extra => If you need to give it current user rights, use this line of code :
+
+sudo chown -R $(whoami) /System/Volumes/Data/data/db
+
+(Just for info -> $(whoami) is just a variable that returns your current user)
+
+----
